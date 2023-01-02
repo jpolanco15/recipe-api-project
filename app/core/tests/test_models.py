@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
+
 class ModelTests(TestCase):
 
     def test_create_user_email_success(self):
@@ -10,9 +11,8 @@ class ModelTests(TestCase):
         password = "testpass123"
 
         user = get_user_model().objects.create_user(
-            email = email,
-            password = password
-        )
+            email=email, password=password
+            )
 
         self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
@@ -26,7 +26,7 @@ class ModelTests(TestCase):
             ["test4@example.COM", "test4@example.com"],
         ]
 
-        for email,expected in sample_emails:
+        for email, expected in sample_emails:
 
             user = get_user_model().objects.create_user(email, 'sample124')
             self.assertEqual(user.email, expected)
